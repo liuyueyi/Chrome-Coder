@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Getting Started Extension's Popup</title>
+    <style>
+    body {
+        min-width: 357px;
+        overflow-x: hidden;
+    }
+    
+    img {
+        margin: 5px;
+        border: 2px solid black;
+        vertical-align: middle;
+        width: 75px;
+        height: 75px;
+    }
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: http://developer.chrome.com/extensions/contentSecurityPolicy.html
+     -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="popup.js" charset="UTF-8"></script>
+</head>
+
+<body>
+    <section class="container">
+        <div class="col-sm-12">
+            <ul id="myTab" class="nav nav-tabs">
+                <li class="dropdown">
+                    <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">编码工具
+            <b class="caret"></b>
+          </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+                        <li><a href="#utf8" tabindex="-1" data-toggle="tab">UTF8/中文</a></li>
+                        <li><a href="#unicode" tabindex="-1" data-toggle="tab">Unicode/中文</a></li>
+                        <li><a href="#url" tabindex="-1" data-toggle="tab">URL编码</a></li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="#time" data-toggle="tab">
+             时间戳
+          </a>
+                </li>
+                <li>
+                    <a href="#about" data-toggle="tab">
+            AboutMe
+          </a>
+                </li>
+            </ul>
+        </div>
+        <div>
+    </section>
+    <section class="container">
+        <div class="col-sm-12">
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade in active" id="time">
+                    <div class="col-sm-6 b-r">
+                        <h4 class="m-t-none m-b">时间戳/日期互转</h4>
+                        <form role="form">
+                            <div class="form-group">
+                                <label>日期</label>
+                                <input type="text" placeholder="Date eg 2017-12-12 12:12:12" class="form-control" id="dateTime">
+                            </div>
+                            <div class="form-group">
+                                <label>时间戳</label>
+                                <input type="number" placeholder="1513051932" class="form-control" id="stamptime">
+                            </div>
+                            <div>
+                                <input type="button" class="btn btn-sm btn-info pull-left m-t-n-xs" id="dateClear" value="Clear">
+                                </input>
+                                <input type="button" class="btn btn-sm btn-primary pull-right m-t-n-xs" id="dateParse" value="Parse">
+                                </input>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="utf8">
+                    <div class="col-sm-6 b-r">
+                        <h4 class="m-t-none m-b">utf8/中文</h4>
+                        <form role="form">
+                            <div class="form-group">
+                                <label>中文</label>
+                                <textarea class="note-codable form-control" id="utf8Chinese"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>utf8</label>
+                                <textarea class="note-codable form-control" id="utf8Code"></textarea>
+                            </div>
+                            <div>
+                                <input type="button" class="btn btn-sm btn-info pull-left m-t-n-xs" id="utf8Clear" value="Clear">
+                                </input>
+                                <input type="button" class="btn btn-sm btn-primary pull-right m-t-n-xs" id="utf8Parse" value="Parse">
+                                </input>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="unicode">
+                    <div class="col-sm-6 b-r">
+                        <h4 class="m-t-none m-b">unicode/中文</h4>
+                        <form role="form">
+                            <div class="form-group">
+                                <label>中文</label>
+                                <textarea class="note-codable form-control" id="unicodeChinese"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Unicode</label>
+                                <textarea class="note-codable form-control" id="unicodeCode"></textarea>
+                            </div>
+                            <div>
+                                <input type="button" class="btn btn-sm btn-info pull-left m-t-n-xs" id="unicodeClear" value="Clear">
+                                </input>
+                                <input type="button" class="btn btn-sm btn-primary pull-right m-t-n-xs" id="unicodeParse" value="Parse">
+                                </input>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="url">
+                    <div class="col-sm-6 b-r">
+                        <h4 class="m-t-none m-b">URL Encode/Decode</h4>
+                        <form role="form">
+                            <div class="form-group">
+                                <label>原始url</label>
+                                <textarea class="note-codable form-control" id="urlOrigin"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>编码url</label>
+                                <textarea class="note-codable form-control" id="urlEncode"></textarea>
+                            </div>
+                            <div>
+                                <input type="button" class="btn btn-sm btn-info pull-left m-t-n-xs" id="urlClear" value="Clear">
+                                </input>
+                                <input type="button" class="btn btn-sm btn-primary pull-right m-t-n-xs" id="urlParse" value="Parse">
+                                </input>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="about">
+                    <div class="col-md-12">
+                        <div class="text-center m-t-lg">
+                          <h3>Encoder <span class="text-danger"><br>Encode & Time Tools</span></h3>
+                            <small>扫一扫关注我的公众号</small>
+                        </div>
+                        <div>
+                            <div class="text-center m-t-lg">
+                                <img src="image/qrcode.jpg" alt="HTML" style="width:150px;height:150px">
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="text-center p-m">
+                                <p>
+                                    更多内容可以关注<strong>六月依 <span class="text-danger">
+                                                    <a target="_blank" href="https://my.oschina.net/u/566591/blog">
+                                                    Blog</a></span></strong>
+                                </p>
+                                <p class="text-center m-t-md">
+                                    <a target="_blank" href="https://git.oschina.net/liuyueyi/encoder" class="btn btn-danger">源码直通车</a>
+                                </p>
+                            </div>
+                            <div>
+                                <div class="text-center">
+                                    <small>If you need any help feel free to write to us on bangzewu@w126.com.
+                                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- footer section -->
+    <footer>
+        <div class="container">
+            <div class="col-md-12 col-sm-12">
+                <hr/>
+                <font id="currentTime" size=2 color="grey"></font>
+            </div>
+            <div class="col-md-12 col-sm-12">
+                <small style="color:blue">Copyright &copy; 2016-2017. @一灰</small>
+            </div>
+        </div>
+        </div>
+    </footer>
+</body>
+
+</html>

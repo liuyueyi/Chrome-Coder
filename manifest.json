@@ -1,0 +1,19 @@
+{
+	"name": "Encoder",
+	"version": "1.0" ,
+	"manifest_version": 2,
+	"description": "编码&时间戳转换小工具.",
+	"browser_action": {
+		"default_icon": "/image/icon48.png",
+		"default_popup": "popup.html",
+		"default_title": "编码&时间戳转换小工具"
+	},
+	"icons": {
+      "128": "/image/icon128.png",
+      "16": "/image/icon16.png",
+      "48": "/image/icon48.png"
+   },
+	"permissions": [
+		"http://api.flickr.com/"
+	]
+}
